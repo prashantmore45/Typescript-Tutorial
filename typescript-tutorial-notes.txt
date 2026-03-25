@@ -1,0 +1,198 @@
+Typescript Tutorial Notes
+========================
+
+Lesson 01: Start Here
+---------------------
+- **What is TypeScript?**
+  - TypeScript is a superset of JavaScript that adds static typing.
+  - It helps catch errors at compile time, not just at runtime.
+  - TypeScript code is transpiled to JavaScript to run in browsers or Node.js.
+
+- **Why use TypeScript?**
+  - Early error detection
+  - Better code completion and documentation
+  - Improved maintainability for large codebases
+
+- **Basic Setup**
+  - Install Node.js and npm.
+  - Install TypeScript globally: `npm install -g typescript`
+  - Initialize a project: `tsc --init` creates a `tsconfig.json` file.
+  - Compile TypeScript: `tsc` compiles `.ts` files to `.js`.
+
+- **First TypeScript File**
+  - Create a file `main.ts`.
+  - Write simple code, e.g., `console.log('Hello, TypeScript!');`
+  - Compile and run: `tsc main.ts` then `node main.js`.
+
+Lesson 02: Basic Types
+----------------------
+- **Primitive Types**
+  - `number`: All numbers (integers, floats)
+  - `string`: Text values
+  - `boolean`: `true` or `false`
+  - `null` and `undefined`: Absence of value
+  - `symbol` and `bigint`: Advanced types for unique values and large integers
+
+- **Type Annotations**
+  - Specify variable types: `let age: number = 25;`
+  - Function parameter and return types: `function greet(name: string): void { ... }`
+
+- **Type Inference**
+  - TypeScript can infer types from initial values: `let city = 'London'; // string`
+
+Lesson 03: Arrays and Objects
+-----------------------------
+- **Arrays**
+  - Typed arrays: `let numbers: number[] = [1, 2, 3];`
+  - Generic arrays: `Array<string> = ['a', 'b']`
+
+- **Objects**
+  - Define object shapes with types:
+    ```typescript
+    let person: { name: string; age: number } = { name: 'Alice', age: 30 };
+    ```
+  - Optional properties: `?` (e.g., `age?: number`)
+
+- **Tuples**
+  - Fixed-length arrays with specific types: `let tuple: [string, number] = ['age', 25];`
+
+Lesson 04: Functions
+--------------------
+- **Function Types**
+  - Parameter and return types: `function add(a: number, b: number): number { return a + b; }`
+  - Optional and default parameters: `function log(msg: string, user?: string) { ... }`
+
+- **Arrow Functions**
+  - Short syntax: `const multiply = (x: number, y: number): number => x * y;`
+
+- **Function Type Aliases**
+  - Define reusable function types:
+    ```typescript
+    type MathOp = (a: number, b: number) => number;
+    ```
+
+Lesson 05: Type Assertions
+-------------------------
+- **Type Assertion**
+  - Tell TypeScript the type of a value: `let someValue: any = 'hello'; let strLen: number = (someValue as string).length;`
+  - Use when you know more than the compiler.
+
+- **Non-null Assertion**
+  - Use `!` to assert a value is not null/undefined: `element!.value`
+
+Lesson 06: Classes
+------------------
+- **Class Syntax**
+  - Define classes with properties and methods:
+    ```typescript
+    class Animal {
+      name: string;
+      constructor(name: string) { this.name = name; }
+      move(distance: number) { console.log(`${this.name} moved ${distance}m`); }
+    }
+    ```
+
+- **Access Modifiers**
+  - `public`: accessible everywhere (default)
+  - `private`: accessible only within the class
+  - `protected`: accessible in class and subclasses
+
+- **Inheritance**
+  - `extends` keyword for subclassing
+  - `super()` to call parent constructor
+
+Lesson 07: Index Signatures & keyof
+-----------------------------------
+- **Index Signatures**
+  - Allow objects with dynamic property names:
+    ```typescript
+    interface StringMap { [key: string]: string; }
+    ```
+
+- **keyof Operator**
+  - Get all property names as a union type: `type PersonKeys = keyof Person;`
+
+Lesson 08: Generics
+-------------------
+- **Generic Functions**
+  - Functions that work with any type:
+    ```typescript
+    function identity<T>(arg: T): T { return arg; }
+    ```
+
+- **Generic Classes & Interfaces**
+  - Classes/interfaces with type parameters:
+    ```typescript
+    class Box<T> { value: T; constructor(value: T) { this.value = value; } }
+    ```
+
+Lesson 09: Utility Types
+------------------------
+- **Partial<T>**: Makes all properties optional
+- **Required<T>**: Makes all properties required
+- **Readonly<T>**: Makes all properties read-only
+- **Pick<T, K>**: Selects a subset of properties
+- **Omit<T, K>**: Removes a subset of properties
+- **Record<K, T>**: Creates an object type with keys K and values T
+
+Lesson 10: Vite + TypeScript
+----------------------------
+- **Vite**: Fast build tool for modern web projects
+- **Setup**: Use `npm create vite@latest` and select TypeScript
+- **Project Structure**: `src/` for code, `public/` for static assets
+- **TypeScript Integration**: Vite supports `.ts` and `.tsx` out of the box
+
+Lesson 11: TypeScript Project Structure
+--------------------------------------
+- **Organizing Code**
+  - `src/` for source code
+  - `model/` for data models
+  - `templates/` for UI templates
+  - `css/` for styles
+
+- **Best Practices**
+  - Use interfaces and types for structure
+  - Keep code modular and maintainable
+
+Lesson 12: React + TypeScript
+-----------------------------
+- **React with TypeScript**
+  - Use `.tsx` for components
+  - Type props and state
+  - Use `useState`, `useEffect` with types
+
+- **Component Props**
+  - Define prop types with interfaces:
+    ```typescript
+    interface CounterProps { count: number; }
+    ```
+
+Lesson 13: React Hooks + TypeScript
+-----------------------------------
+- **Typing Hooks**
+  - `useState<number>(0)`
+  - `useReducer`, `useContext` with custom types
+
+- **Custom Hooks**
+  - Type parameters and return values
+
+Lesson 14: React useReducer + TypeScript
+----------------------------------------
+- **useReducer**
+  - Define state and action types
+  - Type reducer function
+
+Lesson 15: React useContext + TypeScript
+----------------------------------------
+- **useContext**
+  - Create context with default value and type
+  - Use context provider and consumer with types
+
+Lesson 16: React Tic-Tac-Toe Example
+------------------------------------
+- **Project Example**
+  - Combines React, TypeScript, hooks, and context
+  - Demonstrates component structure, state management, and type safety
+
+---
+These notes cover all major TypeScript and React TypeScript concepts from the lessons, with deep explanations and examples for each topic.
